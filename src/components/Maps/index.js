@@ -13,19 +13,28 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
-const AnyReactComponent = ({ text }) => (
+const CurrentLocation = () => (
   <div style={{
-    position: 'relative', color: 'white', background: 'red',
-    height: 40, width: 60, top: -20, left: -30,
+    background: '#CBD9EF', height: 20, width: 20, borderRadius: 10
   }}>
-    {text}
+    <div style={{
+      position: 'relative', color: 'white', background: '#4285F4',
+      height: 10, width: 10, borderRadius: 5, top: 5, left: 5
+    }}>
+    </div>
   </div>
 );
 
 class Maps extends Component {
+  constructor(props){
+    super(props);
+  }
+
   static defaultProps = {
-    center: {lat: 12.9279, lng: 77.6271},
-    zoom: 13
+    center: {lat: 12.930459, lng: 77.634707},
+    zoom: 13,
+    lat: 12.930459,
+    lng: 77.634707
   };
 
   render() {
@@ -35,10 +44,9 @@ class Maps extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <AnyReactComponent
-            lat={12.9279}
-            lng={77.6271}
-            text={'Meesho'}
+          <CurrentLocation
+          lat={this.props.lat}
+          lng={this.props.lng}
           />
         </GoogleMapReact>
       </div>

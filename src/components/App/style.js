@@ -20,9 +20,9 @@ export default {
 
   backgroundImage : {
     height: 800,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    // display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     backgroundImage: `url(${BackgroundImage})`,
     backgroundColor: '#FBFAFA',
   },

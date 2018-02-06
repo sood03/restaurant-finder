@@ -12,7 +12,6 @@ import zomato from 'zomato';
 import Maps from '../Maps';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
-import Geosuggest from 'react-geosuggest';
 import PlaceAutoSuggest from '../PlaceAutoSuggest';
 
 class App extends Component {
@@ -94,19 +93,7 @@ class App extends Component {
         </Toolbar>
 
         <div style={styles.backgroundImage}>
-          <div style={styles.locationSearchBox}>
-            <TextField
-              style={styles.locationSearchText}
-              hintText="Enter your location"
-              onChange = {(text) => this.setLocationText(text)}
-              underlineShow={false}
-              inputStyle={styles.locationInputStyle}
-              hintStyle={styles.locationInputStyle}
-            >
-              <PlaceAutoSuggest/>
-              </TextField>
-
-          </div>
+          <PlaceAutoSuggest/>
         </div>
       </MuiThemeProvider>
     );
