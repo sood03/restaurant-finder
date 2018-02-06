@@ -28,21 +28,17 @@ const CurrentLocation = () => (
 class Maps extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      zoom: 14
+    }
   }
-
-  static defaultProps = {
-    center: {lat: 12.930459, lng: 77.634707},
-    zoom: 13,
-    lat: 12.930459,
-    lng: 77.634707
-  };
 
   render() {
     return (
-      <div style={{height: 800}}>
+      <div className="map-shown">
         <GoogleMapReact
           defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+          defaultZoom={this.state.zoom}
         >
           <CurrentLocation
           lat={this.props.lat}

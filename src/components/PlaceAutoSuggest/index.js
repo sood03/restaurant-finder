@@ -65,10 +65,9 @@ class PlaceAutoSuggest extends React.Component {
   }
 
   renderGeocodeSuccess(lat, lng) {
-
     return (
       <Redirect
-        from = "/"
+        push
         to={{
           pathname: '/result',
           currentLocation: {

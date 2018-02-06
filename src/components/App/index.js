@@ -59,12 +59,6 @@ class App extends Component {
 
   render() {
 
-    var fixtures = [
-      {label: 'Old Elbe Tunnel, Hamburg', location: {lat: 53.5459, lng: 9.966576}},
-      {label: 'Reeperbahn, Hamburg', location: {lat: 53.5495629, lng: 9.9625838}},
-      {label: 'Alster, Hamburg', location: {lat: 53.5610398, lng: 10.0259135}}
-    ];
-
     return (
       <MuiThemeProvider>
         <Toolbar style={styles.toolbar}>
@@ -92,7 +86,7 @@ class App extends Component {
           </ToolbarGroup>
         </Toolbar>
 
-        <div style={styles.backgroundImage}>
+        <div className="background-image" style={styles.backgroundImage}>
           <PlaceAutoSuggest/>
         </div>
       </MuiThemeProvider>

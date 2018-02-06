@@ -19,12 +19,12 @@ export default {
   },
 
   backgroundImage : {
-    height: 800,
+    // height: 800,
     // display: 'flex',
     // justifyContent: 'center',
     // alignItems: 'center',
     backgroundImage: `url(${BackgroundImage})`,
-    backgroundColor: '#FBFAFA',
+    // backgroundColor: '#FBFAFA',
   },
 
   locationSearchBox : {
