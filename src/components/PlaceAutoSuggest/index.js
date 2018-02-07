@@ -9,6 +9,7 @@ import styles from './styles';
 import CircularProgress from 'material-ui/CircularProgress';
 import LocationIcon from 'material-ui-icons/LocationOn'
 import {Redirect} from 'react-router-dom';
+import * as constant from '../common/constants';
 
 class PlaceAutoSuggest extends React.Component {
   constructor(props) {
@@ -29,6 +30,10 @@ class PlaceAutoSuggest extends React.Component {
     this.setState({
       address,
       loading: true,
+      redirect : false,
+      lat : '',
+      lng : '',
+      data : ''
     })
 
     geocodeByAddress(address)
@@ -37,7 +42,6 @@ class PlaceAutoSuggest extends React.Component {
         console.log('Success Yay', {lat, lng});
         this.setState({
           geocodeResults: this.renderGeocodeSuccess(lat, lng),
-          loading: false,
         })
       })
       .catch(error => {
@@ -65,19 +69,28 @@ class PlaceAutoSuggest extends React.Component {
   }
 
   renderGeocodeSuccess(lat, lng) {
-    return (
-      <Redirect
-        push
-        to={{
-          pathname: '/result',
-          currentLocation: {
-            lat: lat,
-            lng: lng
-          }
-        }}/>
-    )
-  }
+    const URL = constant.ZOMATO_FETCH_BY_LOCATION_URL + constant.LATITUDE + constant.EQUAL+ lat + constant.AND + constant.LONGITUDE + constant.EQUAL + lng;
 
+    fetch(URL, {
+      method : "GET",
+      headers : {
+        Accept: 'application/json',
+        'user-key' : constant.ZOMATO_API_KEY
+      }
+    }).then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({
+          loading: false,
+          redirect: true,
+          lat: lat,
+          lng: lng,
+          data: responseJson
+        })
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   render() {
 
@@ -146,9 +159,32 @@ class PlaceAutoSuggest extends React.Component {
           inputProps={inputProps}
           shouldFetchSuggestions={shouldFetchSuggestions}
         />
-        {this.state.loading ? (
-          <CircularProgress />
-        ) : null}
+
+        {
+          this.state.loading ?
+            <CircularProgress size={30} color="white" style={{margin: 10, top:10, zIndex: 10}}/>
+            :
+            <div/>
+        }
+
+        {
+          (this.state.redirect)
+            ?
+            <Redirect
+              push
+              to={{
+                pathname: '/result',
+                currentLocation: {
+                  lat: this.state.lat,
+                  lng: this.state.lng,
+                  data : this.state.data
+                }
+              }}/>
+            :
+            null
+
+        }
+
         {!this.state.loading && this.state.geocodeResults ? (
           <div className="geocoding-results">{this.state.geocodeResults}</div>
         ) : null}

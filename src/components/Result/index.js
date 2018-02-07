@@ -12,14 +12,14 @@ class Result extends Component {
 
     this.state = {
       center: {lat: 12.930459, lng: 77.634707},
-      zoom: 14,
+      zoom: 16,
       lat: 12.930459,
-      lng: 77.634707
+      lng: 77.634707,
+      data: ''
     }
   }
 
   render(){
-
     return (
       <MuiThemeProvider>
         <div>
@@ -28,6 +28,7 @@ class Result extends Component {
             lat={(this.props.location.currentLocation)? this.props.location.currentLocation.lat : this.state.lat}
             lng={(this.props.location.currentLocation)? this.props.location.currentLocation.lng : this.state.lng}
             center={(this.props.location.currentLocation)? this.props.location.currentLocation : this.state.center}
+            data={(this.props.location.currentLocation.data)? this.props.location.currentLocation.data : this.state.data}
           />
         </div>
       </MuiThemeProvider>
