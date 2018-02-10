@@ -16,7 +16,11 @@ export default {
     overflowY: 'auto',
   },
   card: {
+    height: 380,
     marginBottom: 10,
     marginTop: 10
+  },
+  resImage: {
+    height: 260,
   }
 }

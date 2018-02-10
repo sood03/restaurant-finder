@@ -5,6 +5,9 @@
 import React, { Component } from 'react';
 import Maps from '../Maps';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import styles from './styles';
 
 class Result extends Component {
   constructor(props){
@@ -28,13 +31,25 @@ class Result extends Component {
               this.props.location.currentLocation.data.nearby_restaurants.map((list) => (
                 <Card style={styles.card}>
                   <CardMedia
-                    overlay={<CardTitle title={list.restaurant.name} subtitle={list.restaurant.user_rating.aggregate_rating} />}
+                    overlay={<CardTitle title={list.restaurant.name} subtitle={list.restaurant.location.locality}/>}
                   >
-                    <img src={list.restaurant.featured_image} alt={list.restaurant.name} />
+                    <img src={list.restaurant.featured_image} alt={list.restaurant.name} style={styles.resImage}/>
                   </CardMedia>
                   <CardText>
                     {list.restaurant.cuisines}
                   </CardText>
+                  <CardActions>
+                    <FlatButton
+                      label="Book table"
+                      href={(list.restaurant.book_url)?list.restaurant.book_url : list.restaurant.url}
+                      target="_blank"
+                    />
+                    <FlatButton
+                      label="Reviews"
+                      href={list.restaurant.url}
+                      target="_blank"
+                    />
+                  </CardActions>
                 </Card>
               ))
             }
