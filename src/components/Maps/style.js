@@ -23,4 +23,20 @@ export default {
     padding : 50,
     flex: 1
   },
+
+  root : {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    zIndex: 10000000
+  },
+
+  gridList: {
+    width: 500,
+    overflowY: 'auto',
+  },
+  card: {
+    marginBottom: 10,
+    marginTop: 10
+  }
 }

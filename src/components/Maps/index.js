@@ -3,6 +3,10 @@
  */
 import React, { Component } from 'react';
 import GoogleMap, {} from 'google-map-react';
+import * as constant from '../common/constants';
+import styles from './style';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+
 
 const CurrentLocation = () => (
   <div style={{
@@ -17,47 +21,59 @@ const CurrentLocation = () => (
 );
 
 
-
 class Maps extends Component {
   constructor(props){
     super(props);
     this.state = {
-      zoom: 15
+      zoom: 15,
+      data: ''
     }
+
+
   }
 
   renderMarkers(map, maps) {
-    console.log("data: " + this.props.data);
-    var marker;
-    this.props.data.nearby_restaurants.map((list) =>{
-      console.log("list: " + list);
+    var infowindow = new maps.InfoWindow();
+    var marker,i;
+    this.props.data.nearby_restaurants.map((list,i) =>{
         marker = new maps.Marker({
           position: {lat: +list.restaurant.location.latitude, lng: +list.restaurant.location.longitude},
           map,
+          animation: maps.Animation.DROP,
           title: list.restaurant.name
         });
+
+        // maps.event.addListener(marker, 'click', ((marker, i) =>{
+        //   infowindow.setContent(list.restaurant.name);
+        //   infowindow.open(map, marker);
+        // })(marker, i));
+
+      //   maps.event.removeEventListener(marker, 'mouseout', ((marker, i) =>{
+      //   infowindow.setContent(list.restaurant.name);
+      //   infowindow.open(map, marker);
+      // })(marker, i));
     });
   }
 
   render() {
     return (
       <div className="map-shown">
-      <GoogleMap
-        defaultZoom={this.state.zoom}
-        defaultCenter={{
-          lat: this.props.lat,
-          lng: this.props.lng
-        }}
-        onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
-      >
+        <GoogleMap
+          defaultZoom={this.state.zoom}
+          defaultCenter={{
+            lat: this.props.lat,
+            lng: this.props.lng
+          }}
+          onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
+        >
 
-        <CurrentLocation
-          lat={this.props.lat}
-          lng={this.props.lng}
-        />
+          <CurrentLocation
+            lat={this.props.lat}
+            lng={this.props.lng}
+          />
 
-      </GoogleMap>
-        </div>
+        </GoogleMap>
+      </div>
     );
   }
 }

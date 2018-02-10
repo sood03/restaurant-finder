@@ -12,7 +12,6 @@ export default class MainStackRouter extends Component{
     return (
       <div>
         <Route exact path="/" component={App}/>
-
         <Route path='/result' render={(props) => ( <Result {...props} /> )}/>
       </div>
     )
