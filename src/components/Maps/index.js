@@ -1,17 +1,8 @@
 /**
  * Created by nitesood on 04-Feb-18.
  */
-
-// import React, { Component } from 'react';
-// import logo from '../../logo.svg';
-// import GoogleMapReact from 'google-map-react';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-// import styles from './style';
-
-
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import GoogleMap, {} from 'google-map-react';
 
 const CurrentLocation = () => (
   <div style={{
@@ -25,27 +16,48 @@ const CurrentLocation = () => (
   </div>
 );
 
+
+
 class Maps extends Component {
   constructor(props){
     super(props);
     this.state = {
-      zoom: 14
+      zoom: 15
     }
+  }
+
+  renderMarkers(map, maps) {
+    console.log("data: " + this.props.data);
+    var marker;
+    this.props.data.nearby_restaurants.map((list) =>{
+      console.log("list: " + list);
+        marker = new maps.Marker({
+          position: {lat: +list.restaurant.location.latitude, lng: +list.restaurant.location.longitude},
+          map,
+          title: list.restaurant.name
+        });
+    });
   }
 
   render() {
     return (
       <div className="map-shown">
-        <GoogleMapReact
-          defaultCenter={this.props.center}
-          defaultZoom={this.state.zoom}
-        >
-          <CurrentLocation
+      <GoogleMap
+        defaultZoom={this.state.zoom}
+        defaultCenter={{
+          lat: this.props.lat,
+          lng: this.props.lng
+        }}
+        onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
+      >
+
+        <CurrentLocation
           lat={this.props.lat}
           lng={this.props.lng}
-          />
-        </GoogleMapReact>
-      </div>
+        />
+
+      </GoogleMap>
+        </div>
     );
   }
 }

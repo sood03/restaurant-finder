@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react';
 import Maps from '../Maps';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class Result extends Component {
   constructor(props){

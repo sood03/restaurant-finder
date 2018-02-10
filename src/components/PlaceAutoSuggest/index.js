@@ -132,7 +132,7 @@ class PlaceAutoSuggest extends React.Component {
         console.log('Focused!')
       },
       autoFocus: true,
-      placeholder: 'Enter location',
+      placeholder: 'Enter location to search restaurants around you',
       name: 'Demo__input',
       id: 'my-input-id',
     }
