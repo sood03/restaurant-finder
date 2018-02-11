@@ -5,12 +5,20 @@
 import BackgroundImage from '../../images/background.jpeg';
 
 export default {
+  overLay: {
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
+  },
   logo : {
     height: 80,
   },
 
   toolbar : {
-    backgroundColor: '#00BCD4',
+    backgroundColor: 'transparent',
     padding : 45,
     flex: 1
   },
@@ -19,23 +27,14 @@ export default {
   },
 
   backgroundImage : {
-    // height: 800,
-    // display: 'flex',
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundImage: `url(${BackgroundImage})`,
-    // backgroundColor: '#FBFAFA',
   },
 
   locationSearchBox : {
     display: 'flex',
-    // height: 50,
-
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20
-    // textAlign: 'center',
-    // display: 'inline-block',
   },
 
   locationSearchText: {

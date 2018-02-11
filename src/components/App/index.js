@@ -61,33 +61,34 @@ class App extends Component {
 
     return (
       <MuiThemeProvider>
-        <Toolbar style={styles.toolbar}>
-          <ToolbarGroup>
-            <img src={logo} style={styles.logo} alt="logo" />
-            <ToolbarTitle text="Restaurant Finder" style={{color : 'white', paddingLeft: 20, fontSize : 30}}/>
-          </ToolbarGroup>
-          <ToolbarGroup>
-
-            <ToolbarTitle text="Sood" style={{color : 'white', fontSize : 26}}/>
-            <IconMenu
-              iconStyle = {{color : 'white', width : 26, height : 26}}
-              iconButtonElement={
-
-                <IconButton touch={true} style={{color : 'white'}}>
-                  <Person/>
-                </IconButton>
-              }
-              anchorOrigin={{horizontal:"left",vertical:"bottom"}}
-              targetOrigin={{horizontal: 'left', vertical: 'top'}}
-            >
-              <MenuItem primaryText="Profle" />
-              <MenuItem primaryText="Logout" />
-            </IconMenu>
-          </ToolbarGroup>
-        </Toolbar>
-
         <div className="background-image" style={styles.backgroundImage}>
-          <PlaceAutoSuggest/>
+          <div style={styles.overLay}>
+            <Toolbar style={styles.toolbar}>
+              <ToolbarGroup>
+                <img src={logo} style={styles.logo} alt="logo" />
+                <ToolbarTitle text="Restaurant Finder" style={{color : 'white', paddingLeft: 20, fontSize : 30}}/>
+              </ToolbarGroup>
+              <ToolbarGroup>
+
+                <ToolbarTitle text="Sood" style={{color : 'white', fontSize : 26}}/>
+                <IconMenu
+                  iconStyle = {{color : 'white', width : 26, height : 26}}
+                  iconButtonElement={
+
+                    <IconButton touch={true} style={{color : 'white'}}>
+                      <Person/>
+                    </IconButton>
+                  }
+                  anchorOrigin={{horizontal:"left",vertical:"bottom"}}
+                  targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                >
+                  <MenuItem primaryText="Profle" />
+                  <MenuItem primaryText="Logout" />
+                </IconMenu>
+              </ToolbarGroup>
+            </Toolbar>
+            <PlaceAutoSuggest/>
+          </div>
         </div>
       </MuiThemeProvider>
     );
