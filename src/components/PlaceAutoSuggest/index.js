@@ -4,8 +4,6 @@
 
 import React from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import RaisedButton from 'material-ui/RaisedButton';
-import styles from './styles';
 import CircularProgress from 'material-ui/CircularProgress';
 import LocationIcon from 'material-ui-icons/LocationOn'
 import {Redirect} from 'react-router-dom';
@@ -62,7 +60,7 @@ class PlaceAutoSuggest extends React.Component {
 
   renderGeocodeFailure(err) {
     return (
-      <div className="alert alert-danger" role="alert">
+      <div className="alert alert-danger" role="alert" style={{color: 'white', marginTop: 15}}>
         <strong>Error!</strong> {err}
       </div>
     )

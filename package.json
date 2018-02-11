@@ -2,7 +2,9 @@
   "name": "restaurant-finder",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sood03.github.io/restaurant-finder",
   "dependencies": {
+    "gh-pages": "^1.1.0",
     "google-map-react": "^0.29.0",
     "google-maps-react": "^1.1.2",
     "material-ui": "^0.20.0",
@@ -17,6 +19,8 @@
     "zomato": "^1.1.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

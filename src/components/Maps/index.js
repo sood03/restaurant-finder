@@ -3,23 +3,7 @@
  */
 import React, { Component } from 'react';
 import GoogleMap, {} from 'google-map-react';
-import * as constant from '../common/constants';
-import styles from './style';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-
-
-const CurrentLocation = () => (
-  <div style={{
-    background: '#CBD9EF', height: 20, width: 20, borderRadius: 10
-  }}>
-    <div style={{
-      position: 'relative', color: 'white', background: '#4285F4',
-      height: 10, width: 10, borderRadius: 5, top: 5, left: 5
-    }}>
-    </div>
-  </div>
-);
-
+import CurrentLocation from './CurrentLocation';
 
 class Maps extends Component {
   constructor(props){
@@ -28,30 +12,32 @@ class Maps extends Component {
       zoom: 15,
       data: ''
     }
-
-
   }
 
   renderMarkers(map, maps) {
     var infowindow = new maps.InfoWindow();
-    var marker,i;
+    var marker;
     this.props.data.nearby_restaurants.map((list,i) =>{
-        marker = new maps.Marker({
-          position: {lat: +list.restaurant.location.latitude, lng: +list.restaurant.location.longitude},
-          map,
-          animation: maps.Animation.DROP,
-          title: list.restaurant.name
-        });
+      marker = new maps.Marker({
+        position: {lat: +list.restaurant.location.latitude, lng: +list.restaurant.location.longitude},
+        map,
+        animation: maps.Animation.DROP,
+        title: list.restaurant.name
+      });
 
-        // maps.event.addListener(marker, 'click', ((marker, i) =>{
-        //   infowindow.setContent(list.restaurant.name);
-        //   infowindow.open(map, marker);
-        // })(marker, i));
+      maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+        return function() {
+          infowindow.setContent(list.restaurant.name);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
 
-      //   maps.event.removeEventListener(marker, 'mouseout', ((marker, i) =>{
-      //   infowindow.setContent(list.restaurant.name);
-      //   infowindow.open(map, marker);
-      // })(marker, i));
+      maps.event.addListener(marker, 'mouseout', (function(marker, i) {
+        return function() {
+          infowindow.close();
+        }
+      })(marker, i));
+
     });
   }
 

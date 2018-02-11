@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import logo from '../../images/logo.svg';
-import TextField from 'material-ui/TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Person from 'material-ui-icons/Person';
 import IconMenu from 'material-ui/IconMenu';
@@ -9,9 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import styles from './style';
 import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar';
 import zomato from 'zomato';
-import Maps from '../Maps';
 import { Link } from 'react-router-dom';
-import RaisedButton from 'material-ui/RaisedButton';
 import PlaceAutoSuggest from '../PlaceAutoSuggest';
 
 class App extends Component {

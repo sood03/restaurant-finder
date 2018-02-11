@@ -81,6 +81,10 @@ body, #root, .page-wrapper {
   font-size: 30px;
 }
 
+.map-marker{
+  pointer-events: none;
+}
+
 .map-shown {
   width: 100%;
   height: 100%;
