@@ -2,7 +2,7 @@
  * Created by nitesood on 11-Feb-18.
  */
 
-import styles from './styles';
+import styles from './style';
 import {CardText} from 'material-ui/Card';
 import React  from 'react';
 

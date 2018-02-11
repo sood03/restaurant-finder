@@ -4,7 +4,8 @@
 import RestaurantDetails from './RestaurantDetails';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
-import styles from './styles';import DemoImage from '../../images/sample.jpg';
+import styles from './style';
+import DemoImage from '../../images/sample.jpg';
 import Badge from 'material-ui/Badge';
 import React from 'react';
 
