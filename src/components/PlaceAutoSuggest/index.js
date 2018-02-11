@@ -8,6 +8,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import LocationIcon from 'material-ui-icons/LocationOn'
 import {Redirect} from 'react-router-dom';
 import * as constant from '../common/constants';
+import { ApiUtils } from '../common/APIUtils';
 
 class PlaceAutoSuggest extends React.Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class PlaceAutoSuggest extends React.Component {
         console.log('Oh no!', error)
         this.setState({
           loading: false,
-          geocodeResults: this.renderGeocodeFailure(error),
+          geocodeResults: this.renderGeocodeFailure(constant.MAPS_API_ERROR),
         })
       })
   }
@@ -61,7 +62,7 @@ class PlaceAutoSuggest extends React.Component {
   renderGeocodeFailure(err) {
     return (
       <div className="alert alert-danger" role="alert" style={{color: 'white', marginTop: 15}}>
-        <strong>Error!</strong> {err}
+        <strong>Oops!</strong> {err}
       </div>
     )
   }
@@ -75,7 +76,8 @@ class PlaceAutoSuggest extends React.Component {
         Accept: 'application/json',
         'user-key' : constant.ZOMATO_API_KEY
       }
-    }).then((response) => response.json())
+    }).then(ApiUtils.checkStatus)
+      .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
           loading: false,
@@ -86,6 +88,10 @@ class PlaceAutoSuggest extends React.Component {
         })
       })
       .catch((error) => {
+        this.setState({
+          loading: false,
+          geocodeResults: this.renderGeocodeFailure(error.name),
+        });
         console.error(error);
       });
   }
@@ -164,7 +170,6 @@ class PlaceAutoSuggest extends React.Component {
             :
             <div/>
         }
-
         {
           (this.state.redirect)
             ?
@@ -180,7 +185,6 @@ class PlaceAutoSuggest extends React.Component {
               }}/>
             :
             null
-
         }
 
         {!this.state.loading && this.state.geocodeResults ? (

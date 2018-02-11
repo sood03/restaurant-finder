@@ -9,3 +9,5 @@ export const LATITUDE='lat';
 export const LONGITUDE='lon';
 export const AND='&';
 export const EQUAL='=';
+export const MAPS_API_ERROR="Error happened while fetching this location from Google Maps API";
+export const ZOMATO_API_ERROR="This location could not be found on Zomato";

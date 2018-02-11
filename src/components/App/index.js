@@ -26,30 +26,6 @@ class App extends Component {
     })
   }
 
-  fetchList(){
-
-    console.log("Fetching");
-    var client = zomato.createClient({
-      userKey : '7749b19667964b87a3efc739e254ada2'
-    });
-
-    console.log("client created");
-
-    client.getCities({
-      q:"New Delhi", //query by city name
-      lat:"28.613939", //latitude
-      lon:"77.209021", //longitude
-      city_ids:"1,2,3", //comma separated city_ids value
-      count:"2" // number of maximum result to display
-    }, function(err, result){
-      if(!err){
-        console.log(result);
-      }else {
-        console.log(err);
-      }
-    });
-  }
-
   onSuggestSelect(suggest) {
     console.log(suggest);
   }
