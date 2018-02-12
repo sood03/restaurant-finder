@@ -2,12 +2,13 @@
  * Created by nitesood on 11-Feb-18.
  */
 import RestaurantDetails from './RestaurantDetails';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardMedia, CardTitle} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import styles from './style';
 import DemoImage from '../../images/sample.jpg';
 import Badge from 'material-ui/Badge';
 import React from 'react';
+import * as constant from '../common/constants';
 
 const RestaurantCard = (props) => (
   <Card style={styles.card}>
@@ -38,8 +39,8 @@ const RestaurantCard = (props) => (
       </CardMedia>
     </a>
 
-    <RestaurantDetails title = 'Cuisines' titleDetail = {props.list.restaurant.cuisines}/>
-    <RestaurantDetails title='Price for two' titleDetail={props.list.restaurant.currency + props.list.restaurant.average_cost_for_two}/>
+    <RestaurantDetails title = {constant.CUISINES} titleDetail = {props.list.restaurant.cuisines}/>
+    <RestaurantDetails title= {constant.PRICE_FOR_TWO} titleDetail={props.list.restaurant.currency + props.list.restaurant.average_cost_for_two}/>
 
     <CardActions style={{paddingTop: 8, textAlign : 'center'}}>
       <RaisedButton

@@ -5,7 +5,6 @@
 import React, { Component } from 'react';
 import Maps from '../Maps';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import styles from './style';
 import AppBar from 'material-ui/AppBar';
 import RestaurantCard from './RestaurantCard';

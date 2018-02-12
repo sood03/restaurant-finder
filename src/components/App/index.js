@@ -7,8 +7,6 @@ import IconButton from 'material-ui/IconButton';
 import MenuItem from 'material-ui/MenuItem';
 import styles from './style';
 import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar';
-import zomato from 'zomato';
-import { Link } from 'react-router-dom';
 import PlaceAutoSuggest from '../PlaceAutoSuggest';
 
 class App extends Component {

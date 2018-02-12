@@ -110,6 +110,7 @@ class PlaceAutoSuggest extends React.Component {
           <img
             src={require('../../images/powered_by_google_default.png')}
             className="Demo__dropdown-footer-image"
+            alt="Powered by Google"
           />
         </div>
       </div>
