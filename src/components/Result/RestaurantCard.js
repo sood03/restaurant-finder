@@ -33,7 +33,7 @@ const RestaurantCard = (props) => (
         />}
       >
         <img
-          src={(props.list.restaurant.featured_image)? props.list.restaurant.featured_image : DemoImage}
+          src={(props.list.restaurant.thumb)? props.list.restaurant.thumb : DemoImage}
           alt={props.list.restaurant.name}
           style={styles.resImage}/>
       </CardMedia>

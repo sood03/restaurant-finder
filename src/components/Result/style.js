@@ -17,6 +17,7 @@ export default {
   },
   card: {
     // height: 380,
+    width: 360,
     marginBottom: 10,
     marginTop: 10,
     textAlign: 'left',
