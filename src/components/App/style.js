@@ -2,7 +2,7 @@
  * Created by nitesood on 11-Feb-18.
  */
 
-import BackgroundImage from '../../images/background.jpeg';
+import BackgroundImage from '../../images/background.jpg';
 
 export default {
   overLay: {
